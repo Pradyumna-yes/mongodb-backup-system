@@ -6,7 +6,7 @@ BACKUP_DIR="/tmp/mongodb_backups"         # Temporary directory for backups
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")    # Timestamp for the backup file
 BACKUP_FILE="$BACKUP_DIR/${DB_NAME}_backup_$TIMESTAMP.tar.gz"
 R2_BUCKET="paddu"                         # Cloudflare R2 bucket name
-R2_ENDPOINT="<Enter the Endpoint Link" # R2 endpoint
+R2_ENDPOINT="https://ee39b00ce77b46c6e6df5b0d3717b9bd.eu.r2.cloudflarestorage.com" # R2 endpoint
 
 # Step 1: Create backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
@@ -30,7 +30,7 @@ echo "Backup and upload completed successfully at $TIMESTAMP"
 
 
 #section for the health monitor
-curl -fsS --retry 3 https://hc-ping.com/<Enter the uuid slug>> > /dev/null
+curl -fsS --retry 3 https://hc-ping.com/f265e9aa-2b27-4421-9f05-0093f1f2b3e5 > /dev/null
 
 
 #section to add the encrypt the files
