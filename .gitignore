@@ -1,0 +1,25 @@
+# Ignore system files
+/proc/*
+/sys/*
+/dev/*
+/var/*
+
+# Ignore binaries, libraries, and executables
+/usr/bin/mongo*
+/usr/bin/mongod
+/usr/lib/llvm*
+*.so
+*.dll
+*.exe
+*.deb
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+*.tmp
+*.bak
+
+# Ignore temporary backup files and test data
+test.txt
+/tmp/*
