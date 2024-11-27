@@ -2,7 +2,7 @@
 
 # Variables
 R2_BUCKET="paddu"  # Your Cloudflare R2 bucket name
-R2_ENDPOINT="https://ee39b00ce77b46c6e6df5b0d3717b9bd.eu.r2.cloudflarestorage.com"
+R2_ENDPOINT="<Enter the R2 Endpoint"
 RESTORE_DIR="/tmp/mongodb_restore"
 LATEST_BACKUP=$(aws s3 ls s3://$R2_BUCKET --endpoint-url=$R2_ENDPOINT | sort | tail -n 1 | awk '{print $4}')
 
