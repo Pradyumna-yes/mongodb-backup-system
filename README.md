@@ -57,3 +57,38 @@ Automated-DB-Backups/
 └── docs/
     ├── setup_instructions.md   # Detailed setup guide
     └── troubleshooting.md      # Common issues and fixes
+```
+## Setup and Configuration
+
+**1. Clone the Repository**
+Clone the project to your local machine:
+git clone https://github.com/<your_username>/Automated-DB-Backups.git
+cd Automated-DB-Backups
+
+**2. Configure Database Settings**
+Update config/db_config.json with your database connection details:
+{
+    "host": "localhost",
+    "port": "3306",
+    "username": "root",
+    "password": "password",
+    "database": "my_database"
+}
+
+**3. Configure Backup Settings**
+Update config/backup_settings.json with your backup preferences:
+{
+    "s3_bucket": "s3://your-bucket-name",
+    "endpoint_url": "https://your-cloudflare-endpoint.com",
+    "retention_days": 7
+}
+
+4. Install Dependencies
+Ensure the necessary tools are installed:
+
+Install the AWS CLI: AWS CLI Installation Guide
+Test connectivity with your S3 bucket:
+
+aws s3 ls s3://your-bucket-name --endpoint-url https://your-cloudflare-endpoint.com
+
+    
