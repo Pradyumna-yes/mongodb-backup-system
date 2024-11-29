@@ -62,8 +62,10 @@ Automated-DB-Backups/
 
 **1. Clone the Repository**
 Clone the project to your local machine:
+```bash
 git clone https://github.com/<your_username>/Automated-DB-Backups.git
 cd Automated-DB-Backups
+```
 
 **2. Configure Database Settings**
 Update config/db_config.json with your database connection details:
