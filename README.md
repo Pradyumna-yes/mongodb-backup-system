@@ -87,7 +87,7 @@ Update config/backup_settings.json with your backup preferences:
     "retention_days": 7
 }
 ```
-4. Install Dependencies
+## 4. Install Dependencies 
 Ensure the necessary tools are installed:
 
 Install the AWS CLI: AWS CLI Installation Guide
@@ -95,7 +95,7 @@ Test connectivity with your S3 bucket:
 ```bash
 aws s3 ls s3://your-bucket-name --endpoint-url https://your-cloudflare-endpoint.com
 ```
-5. Set Up Jenkins Pipeline
+## 5. Set Up Jenkins Pipeline 
   1.Open Jenkins and create a new pipeline job.
   2.Copy the contents of Jenkinsfile into the pipeline configuration.
   3.Configure a cron schedule (e.g., H 2 * * * for daily backups).
