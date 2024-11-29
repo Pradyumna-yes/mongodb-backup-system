@@ -130,17 +130,18 @@ Run the following command to verify the backup process:
 ```
 Copy code
 ./backup.sh
+
 ```
-*.Check the generated .sql file in the current directory.
-*.Verify that the backup file is uploaded to the S3 bucket.
+1.1Check the generated .sql file in the current directory.
+1.2Verify that the backup file is uploaded to the S3 bucket.
 
 **2. Test Restore Script**
 Restore the generated backup:
 ```
 ./restore.sh path/to/backup.sql
 ```
-##3. Jenkins Pipeline Test##
+## 3. Jenkins Pipeline Test##
 Trigger the Jenkins job manually to ensure it executes without errors.
 
-##License##
+## License ##
 This project is licensed under the MIT License. See the LICENSE file for more information.
