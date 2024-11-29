@@ -113,7 +113,7 @@ Backups can be triggered in two ways:
    2.Manually from the Command Line: Run the backup.sh script:
    
     ./backup.sh
-``
+    
 ## 7 Restore Database
 To restore a database from a backup:
    1.Locate the desired backup file in your S3 bucket.
