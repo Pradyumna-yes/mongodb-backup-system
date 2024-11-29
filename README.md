@@ -69,6 +69,7 @@ cd Automated-DB-Backups
 
 **2. Configure Database Settings**
 Update config/db_config.json with your database connection details:
+```bash
 {
     "host": "localhost",
     "port": "3306",
@@ -76,21 +77,70 @@ Update config/db_config.json with your database connection details:
     "password": "password",
     "database": "my_database"
 }
-
+```
 **3. Configure Backup Settings**
 Update config/backup_settings.json with your backup preferences:
+```bash
 {
     "s3_bucket": "s3://your-bucket-name",
     "endpoint_url": "https://your-cloudflare-endpoint.com",
     "retention_days": 7
 }
-
+```
 4. Install Dependencies
 Ensure the necessary tools are installed:
 
 Install the AWS CLI: AWS CLI Installation Guide
 Test connectivity with your S3 bucket:
-
+```bash
 aws s3 ls s3://your-bucket-name --endpoint-url https://your-cloudflare-endpoint.com
+```
+5. Set Up Jenkins Pipeline
+  1.Open Jenkins and create a new pipeline job.
+  2.Copy the contents of Jenkinsfile into the pipeline configuration.
+  3.Configure a cron schedule (e.g., H 2 * * * for daily backups).
+  4.Add environment variables in the pipeline for S3 settings:
+   *.S3_BUCKET
+   *.ENDPOINT_URL
 
-    
+## Usage
+**Run Backups**
+Backups can be triggered in two ways:
+
+   1.Automated via Jenkins:
+     *.Set up the pipeline as described above.
+     *.Jenkins will automatically run backups based on your schedule.
+   2.Manually from the Command Line: Run the backup.sh script:
+   
+    ./backup.sh
+``
+## Restore Database
+To restore a database from a backup:
+   1.Locate the desired backup file in your S3 bucket.
+   2.Download the file and run the restore.sh script:
+```
+   ./restore.sh path/to/backup.sql
+```
+This will overwrite the existing database with the contents of the backup.
+
+## Manual Testing
+
+**1. Test Backup Script**
+Run the following command to verify the backup process:
+```
+Copy code
+./backup.sh
+```
+*.Check the generated .sql file in the current directory.
+*.Verify that the backup file is uploaded to the S3 bucket.
+
+**2. Test Restore Script**
+Restore the generated backup:
+```
+./restore.sh path/to/backup.sql
+```
+##3. Jenkins Pipeline Test##
+Trigger the Jenkins job manually to ensure it executes without errors.
+
+##License##
+This project is licensed under the MIT License. See the LICENSE file for more information.
