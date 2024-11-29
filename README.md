@@ -103,7 +103,7 @@ aws s3 ls s3://your-bucket-name --endpoint-url https://your-cloudflare-endpoint.
    *.S3_BUCKET
    *.ENDPOINT_URL
 
-## Usage
+## 6 Usage
 **Run Backups**
 Backups can be triggered in two ways:
 
@@ -114,7 +114,7 @@ Backups can be triggered in two ways:
    
     ./backup.sh
 ``
-## Restore Database
+## 7 Restore Database
 To restore a database from a backup:
    1.Locate the desired backup file in your S3 bucket.
    2.Download the file and run the restore.sh script:
@@ -123,7 +123,7 @@ To restore a database from a backup:
 ```
 This will overwrite the existing database with the contents of the backup.
 
-## Manual Testing
+## 8 Manual Testing
 
 **1. Test Backup Script**
 Run the following command to verify the backup process:
@@ -132,6 +132,8 @@ Copy code
 ./backup.sh
 
 ```
+![image](https://github.com/user-attachments/assets/a46d6893-17d0-417f-9483-4161253ceede)
+
 1.1Check the generated .sql file in the current directory.
 1.2Verify that the backup file is uploaded to the S3 bucket.
 
@@ -140,8 +142,12 @@ Restore the generated backup:
 ```
 ./restore.sh path/to/backup.sql
 ```
+![image](https://github.com/user-attachments/assets/026075ee-30b4-4358-8523-5ae23fd8f189)
+
 ## 3. Jenkins Pipeline Test##
 Trigger the Jenkins job manually to ensure it executes without errors.
+![image](https://github.com/user-attachments/assets/b2623da4-6cbc-4489-b2ec-d353c9a917ea)
+
 
 ## License ##
 This project is licensed under the MIT License. See the LICENSE file for more information.
