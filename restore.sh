@@ -1,13 +1,14 @@
+#!/bin/bash
+
 # Variables
-DB_NAME="mydb"                              # Name of the database to restore
-BACKUP_DIR="/tmp/mongodb_restore"           # Temporary directory for restoring
-R2_BUCKET="paddu"                           # Cloudflare R2 bucket name
-R2_ENDPOINT="https://ee39b00ce77b46c6e6df5b0d3717b9bd.eu.r2.cloudflarestorage.com" # Cloudflare R2 endp>
-LATEST_BACKUP_FILE=""                       # Placeholder for the latest backup file
+DB_NAME="mydb"
+BACKUP_DIR="/tmp/mongodb_restore"
+R2_BUCKET="paddu"
+R2_ENDPOINT="https://ee39b00ce77b46c6e6df5b0d3717b9bd.eu.r2.cloudflarestorage.com"
 
 # Step 1: Fetch the latest backup file name from Cloudflare R2
 echo "Fetching the latest backup file from Cloudflare R2..."
-LATEST_BACKUP_FILE=$(aws s3 ls s3://$R2_BUCKET --endpoint-url="$R2_ENDPOINT" | sort | tail -n 1 | awk '>
+LATEST_BACKUP_FILE=$(aws s3 ls s3://$R2_BUCKET --endpoint-url="$R2_ENDPOINT" | sort | tail -n 1 | awk '{print $4}')
 if [ -z "$LATEST_BACKUP_FILE" ]; then
     echo "Error: No backup files found in the bucket!"
     exit 1
@@ -22,7 +23,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Step 3: Create the restore directory if it doesn't exist
+# Step 3: Create the restore directory
 echo "Creating restore directory: $BACKUP_DIR"
 mkdir -p "$BACKUP_DIR"
 
@@ -48,4 +49,3 @@ rm -f /tmp/$LATEST_BACKUP_FILE
 rm -rf $BACKUP_DIR
 
 echo "Database restore completed successfully!"
-
