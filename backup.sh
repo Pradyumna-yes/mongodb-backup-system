@@ -28,20 +28,12 @@ rm -f "$BACKUP_FILE"
 
 echo "Backup and upload completed successfully at $TIMESTAMP"
 
-
 #section for the health monitor
 curl -fsS --retry 3 https://hc-ping.com/f265e9aa-2b27-4421-9f05-0093f1f2b3e5 > /dev/null
 
 
-#section to add the encrypt the files
-gpg --symmetric --cipher-algo AES256 -o "${BACKUP_FILE}.gpg" "$BACKUP_FILE"
-aws s3 cp "${BACKUP_FILE}.gpg" s3://$R2_BUCKET --endpoint-url=$R2_ENDPOINT
-rm -f "${BACKUP_FILE}" "${BACKUP_FILE}.gpg"
-
-
-
 #logic to delete the old backup
 
-aws s3 ls s3://$R2_BUCKET --endpoint-url=$R2_ENDPOINT | sort | head -n -7 | awk '{print $4}' | while read old_file; do
+aws s3 ls s3://$R2_BUCKET --endpoint-url=$R2_ENDPOINT | sort | head -n -7 | awk '{print $4}' | while re>
     aws s3 rm s3://$R2_BUCKET/$old_file --endpoint-url=$R2_ENDPOINT
 done
